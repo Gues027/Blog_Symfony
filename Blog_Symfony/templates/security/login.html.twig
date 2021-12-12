@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="col-12 text-center">
+            <h1>Vous devez vous connecter pour faire cette action</h1>
+        </div>
+        <h1> Connexion </h1>
+
+        <form action="{{ path('security_login') }}" method="post">
+            <div clas="form-group">
+                <input type="text" placeholder="Mail" required name="_username" class="form-control"/>
+            </div><br>
+            <div clas="form-group">
+                <input type="password" placeholder="Mot de passe" required name="_password" class="form-control"/>
+            </div><br>
+            <div clas="form-group">
+                <button type="submit" class="btn-success">Connexion</button>
+            </div>
+        </form><br>
+        <a href="{{ path('security_registration') }}" class="card-link">S'inscrire...</a>
+    </div>
+{% endblock %}

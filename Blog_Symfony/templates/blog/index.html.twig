@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur Mon blog !{% endblock %}
+
+{% block body %}
+    <div class="container-fluid" style="text-align: center">
+        <p class="h1">Articles</p>
+
+        {% for item in articleTableau %}
+
+            <div class="container" style="margin-bottom: 60px; background: #dee2e6; border-radius: 5px; width: 550px; padding: 10px;" >
+
+                <div class="row"><span style="font-weight: bold; text-transform: uppercase; margin-bottom: 10px; text-decoration: underline;">{{ item.titre }}</span></div>
+                <div class="col" style="margin-bottom: 20px"><img src="{{ item.picture }}" width="150" height="150"></div>
+                <div class="col" style="text-align: justify;">{{ item.contenue }}</div>
+                <div class="col"><strong>{{ item.author }}</strong></div><br>
+
+                <div class="row">
+                    <a href="{{ path('edit', {id:item.id}) }}">Editer</a>
+                    <div class="col" style="margin-bottom: 20px">
+                        <form action="{{ path('delete', {id:item.id}) }}" method="post">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete'~item.id) }}">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form action="" method="post">
+                            <label>Commentaire:</label>
+                            <input type="text">
+                            <input type="submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+{% endblock %}
