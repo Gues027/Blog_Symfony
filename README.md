@@ -1,2 +1,4 @@
 # Blog_Symfony
-Projet Webtech n3 Blog en Symfony
+Author : Hugo SCHRAM
+Projet Webtech n3 2021
+Blog en Symfony
